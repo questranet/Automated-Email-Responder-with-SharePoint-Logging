@@ -1,1 +1,20 @@
+✅ 1. Implementing Retry & Error Handling in Power Automate.
+The flow works just fine, but what happens if it fails? In this article, I will be iterating further the tool built so far by adding scalability and resilience to the product to make it fail proof, and whenever it fails, there is always a message log notifying you.  
 
+*  Configure Retry Policies
+
+1. Go to each action (e.g., “Send email”, “Create item”, “Post message in a chat or channel”).
+2. Open the settings (⋯) → Settings → set retry policy to Automatic (4 retries) with exponential intervals.
+
+*  Add a “Scope” Step for Error Logging
+
+1. Wrap your main steps in a Scope action.
+2. Add another Scope labeled “On Error” using the “Configure run after” option.
+3. Set to run if the main scope fails or is skipped.
+
+*  Log Errors to SharePoint or Teams.
+
+1. Inside the error Scope, add “Create item” in a new SharePoint list (Email Error Logs) or send a Teams message indicating failure.
+2. Include dynamic details: Flow name, timestamp, error message.
+
+https://dev.to/wale_megbabi/auto-reply-automation-scale-resilience-pt5-15kb
